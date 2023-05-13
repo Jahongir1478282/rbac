@@ -1,4 +1,11 @@
-import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsEnum,
+  IsNotEmpty,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
+import { Role } from '../entity/user.entity';
 
 export class UserDto {
   @IsNotEmpty()
@@ -12,6 +19,10 @@ export class UserDto {
   @IsNotEmpty()
   @IsString()
   email: string;
+
+  @IsNotEmpty()
+  @IsEnum(Role)
+  role: Role;
 
   @IsNotEmpty()
   @MinLength(5)
